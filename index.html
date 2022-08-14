@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>UruArte</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="./galeria.html">Galería</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="app">
+
+    </div>
+    <button><a href="./galeria.html">Entrar</a></button>
+    <script src="https://unpkg.com/vue@next"></script>
+
+
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    items:[
+                    {
+                        title:"¿Quiénes somos?",
+                        description:"UruPinturas es una asociación que se encarga de exhibir muestras de arte de manera digital.",
+                        foto: './assets/ShopaholicsAvatar.png'
+                    
+                    },
+                    {
+                        title:"¿Por qué lo hacemos?",
+                        description:"Creemos que el arte es algo que toos debemos tener a disposición, tratamos de comunicar de manera más eficiente de las obras de algunos autores no tan conocidos.",
+                        foto:'./assets/ShinyHappyAvatar.png',
+                    },
+                    {
+                        title:'¿Cómo funcionamos?',
+                        description:"Nostros tenemos una galería de fotos de las obras de arte, usted entraría ahí y las visualizaría, si a usted le gusta alguna, puede comprarla.",
+                        foto:'./assets/MoneyverseStanding.png',
+                    },
+                    {
+                        title:'¿Qué beneficios tiene adquirir el servicio?',
+                        description:'Además de adquirir buenas obras de arte, usted apoyará a artistas pocos conocidos, lo que los ayudará en su carrera profesional.',
+                        foto:'./assets/TuttoRiccoPinkAvatar.png',
+                    },
+                    ]
+                }
+            },
+            template:`
+            <div v-for="item in items" class="item">
+                <img :src="item.foto">
+                <div>
+                    <h2>{{item.title}}</h2>
+                    <p>{{item.description}}</p>
+                </div>
+            </div>
+            `
+        }).mount('#app');
+    </script>
+
+
+
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        html{
+            font-size: 62.5%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .item{
+            display: flex;
+            margin-top: 45px;
+            margin-bottom: 45px;
+        }
+        p{
+            font-size: 12px;
+        }
+        .item div{
+            justify-content: center;
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        h2{
+            font-size: 20px;
+        }
+        h1{
+            font-size: 3.0rem;
+            margin-top: 15px;
+            text-align: center;
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+        ul li{
+            margin: 0 .75rem;
+            margin-top: 5px;
+        }
+        ul li a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: rgb(90, 89, 89);
+        }
+        button{
+            display: block;
+            margin: 0 auto;
+            width: 105px;
+            height: 45px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border: none;
+            background-color: #55EC5B;
+        }
+        button a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>

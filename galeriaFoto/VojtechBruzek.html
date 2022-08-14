@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>UruArte</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../galeria.html">Galería</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="app">
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            template:`
+            <div class="description">
+                <h2>Weekend Vibes.</h2>
+                <p>Vojtech Bruzek</p>
+            </div>
+            <div class="text">
+                <img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">,
+                <div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    </p>
+                    <button><a href="../comprar.html">Comprar</a></button>
+                </div>
+            </div>`
+        }).mount('#app');
+    </script>
+
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        html{
+            font-size: 62.5%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .item{
+            display: flex;
+            margin-top: 45px;
+            margin-bottom: 45px;
+        }
+        p{
+            font-size: 12px;
+        }
+        h2{
+            font-size: 20px;
+        }
+        h1{
+            font-size: 3.0rem;
+            margin-top: 15px;
+            text-align: center;
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+        ul li{
+            margin: 0 .75rem;
+            margin-top: 5px;
+        }
+        ul li a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: rgb(90, 89, 89);
+        }
+        .description{
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 70px;
+        }
+        .description p{
+            font-style: italic;
+        }
+        img{
+            width: 60%;
+            height: 220px;
+        }
+        .text{
+            display: flex;
+            margin: 0 auto;
+            width: 90%;
+            margin-top: 50px;
+        }
+        .text div{
+            padding-left: 10px;
+        }
+        .text p{
+            line-height: 18px;
+        }
+        button{
+            display: block;
+            margin: 0 auto;
+            width: 105px;
+            height: 35px;
+            margin-top: 10px;
+            border-radius: 15px;
+            border: none;
+            background-color: #55EC5B;
+            margin-top: 22px;
+        }
+        button a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>

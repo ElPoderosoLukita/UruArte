@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>UruArte</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./comprado.html">Galería</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="app">
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    numeroTarjeta:"0000 0000 0000 0000",
+                    nombre:"",
+                    mesVencimiento:"00",
+                    añoVencimiento:"00",
+                    codigo:"000",
+                    disabled:true,
+                    pStyle:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle2:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle3:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle4:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle5:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle6:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle7:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle8:{
+                        color:"red",
+                        display:"none",
+                    },
+                    pStyle9:{
+                        color:"red",
+                        display:"none",
+                    },
+                    buttonStyle:{
+                        backgroundColor:"#55EC5B",
+                    },
+                    href:"./comprado.html",
+                };
+            },
+            template:`
+                <div class="tarjeta">
+                    <h2>Tarjeta<span>Crédito</span></h2>
+                    <h2 class="numeroTarjeta">{{numeroTarjeta}}</h2>    
+                    <div class="textos">
+                        <p class="nombre">{{nombre}}</p>
+                        <p class="vencimiento">{{mesVencimiento}}/{{añoVencimiento}}</p>
+                    </div>
+                </div>
+
+
+                <div class="tarjetaAtras">
+                    <div class="franja"></div>
+                    <div class="codigo">{{codigo}}</div>
+                </div>
+
+                <h2 class="datostarjeta">Datos Tarjeta</h2>
+
+                <form>
+                    <label for="num">Número de tarjeta</label>
+                    <input type="text" v-model="numeroTarjeta" id="num" @input="numero">
+                    <p :style="pStyle">La tarjeta debe contener 19 caracteres.</p>
+                    <p :style="pStyle2">La tarjeta no puede contener letras</p>
+
+
+                    <label for="nombre">Nombre</label>
+                    <input type="text" v-model="nombre" id="nombre" @input="nombreMethod">
+                    <p :style="pStyle3">El nombre debe tener entre 5 y 20 caracteres.</p>
+                    <p :style="pStyle4">El nombre no puede contener números.</p>
+
+
+                    <label for="mesVencimiento">Mes de Vencimiento</label>
+                    <input type="text" v-model="mesVencimiento" id="mesVencimiento" @input="mesfecha">
+                    <p :style="pStyle5">La fecha debe tener 2 dígitos por campo.</p>
+                    <p :style="pStyle6">La fecha no puede contener letras.</p>
+
+
+                    <label for="añoVencimiento">Año de Vencimiento</label>
+                    <input type="text" v-model="añoVencimiento" id="añoVencimiento" @input="añofecha">
+                    <p :style="pStyle7">La fecha no puede ser mayor que 2 dígitos por campo.</p>
+                    <p :style="pStyle8">La fecha no puede contener letras.</p>
+
+
+                    <label for="cvv">CVV</label>
+                    <input type="text" v-model="codigo" id="cvv" @input="cvv">
+                    <p :style="pStyle9">El código debe tener 3 dígitos.</p>
+                    
+                    <button :style="buttonStyle"><a :href="href" disabled>Comprar</a></button>
+                </form>
+
+            `,
+            methods:{
+                numero(){
+                    const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+                    let validatee = false;
+
+                    if(this.numeroTarjeta.length >19 || this.numeroTarjeta.length<19){
+                        this.pStyle.display = "block"
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    }
+
+                    for(let i=0; i<this.numeroTarjeta.length; i++){
+                        validatee = this.numeroTarjeta.includes(letras[i]);
+                        if(validatee == true){
+                            break;
+                        }
+                    };
+                    if(validatee){
+                        this.pStyle2.display = "block";
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle2.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    }
+                },
+                nombreMethod(){
+                    let validate=false;
+                    const numeros = [0,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,0]
+
+                    if(this.nombre.length > 20){
+                        this.pStyle3.display = "block";
+                        this.buttonStyle.backgroundColor="#9afd9e"
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle3.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    }
+
+                    for(let i=0; i<this.nombre.length; i++){
+                        if(this.nombre.includes(numeros[i])){
+                            validate=true;
+                            break;
+                        };
+                    };
+                    if(validate){
+                        this.pStyle4.display = "block";
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle4.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    };
+                },
+
+                mesfecha(){
+                    const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+                    let validate = false;
+
+                    if(this.mesVencimiento.length > 2 || this.mesVencimiento.length<2){
+                        this.pStyle5.display = "block";
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle5.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    }
+                    console.log(validate);
+                    for(let i=0; i<this.mesVencimiento.length; i++){
+                        validate = this.mesVencimiento.includes(letras[i]);
+                        if(validate == true){
+                            break;
+                        }
+                    };
+                    if(validate){
+                        this.pStyle6.display = "block";
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle6.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    }
+                },
+
+                añofecha(){
+                    const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+                    let validate = false;
+
+                    if(this.añoVencimiento.length > 2 || this.añoVencimiento.length<2){
+                        this.pStyle7.display = "block";
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle7.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    }
+
+                    for(let i=0; i<this.añoVencimiento.length; i++){
+                        validate = this.añoVencimiento.includes(letras[i]);
+                        if(validate == true){
+                            break;
+                        }
+                    };
+                    if(validate){
+                        this.pStyle8.display = "block";
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle8.display = "none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    };
+                },
+
+                cvv(){
+                    if(this.codigo.length > 3 || this.codigo.length < 3){
+                        this.pStyle9.display="block";
+                        this.buttonStyle.backgroundColor="#9afd9e";
+                        this.href = "./comprar.html"
+                    } else {
+                        this.pStyle9.display="none";
+                        this.buttonStyle.backgroundColor="#55EC5B";
+                        this.href = "./comprado.html"
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+
+
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        html{
+            font-size: 62.5%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2{
+            font-size: 20px;
+        }
+        h1{
+            font-size: 3.0rem;
+            margin-top: 15px;
+            text-align: center;
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+        ul li{
+            margin: 0 .75rem;
+            margin-top: 5px;
+        }
+        ul li a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: rgb(90, 89, 89);
+        }
+        .tarjeta, .tarjetaAtras{
+            width: 250px;
+            height: 130px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 50px;
+            background-color: rgb(129, 129, 241);
+            border-radius: 10px;
+        }
+        .tarjeta h2{
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+        .tarjeta h2 span{
+            font-weight:100;
+        }
+        .numeroTarjeta{
+            padding-top: 25px !important;
+        }
+        .nombre{
+            padding-top: 20px;
+            font-size: 15px;
+            padding-left: 12px;
+        }
+        .vencimiento{
+            padding-top: 20px;
+            padding-right:10px;
+            font-size: 15px;
+        }
+        .textos{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .tarjetaAtras .franja{
+            width: 100%;
+            background-color: black;
+            height: 20px;
+            margin-top: 15px;
+        }
+        .tarjetaAtras .codigo{
+            width: 200px;
+            height: 40px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            margin: 0 auto;
+            margin-bottom: 25px;
+        }
+        form input{
+            height: 25px;
+            border-radius: 15px;
+            border: none;
+            background-color: rgb(216, 216, 216);
+            padding-left: 6px;
+        }
+        form label{
+            margin-top: 25px;
+            font-size: 1.3rem;
+        }
+        form button{
+            display: block;
+            margin: 0 auto;
+            width: 105px;
+            height: 45px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border: none;
+            background-color: #55EC5B;
+            margin-top: 50px;
+        }
+        button a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .datostarjeta{
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</body>
+</html>

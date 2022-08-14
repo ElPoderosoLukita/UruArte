@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>UruArte</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./galeria.html">Galería</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="app">
+
+    </div>
+    <button><a href="./index.html">Volver</a></button>
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        const app = Vue.createApp({
+            template:`
+                <h2>¡Gracias por comprar y apoyar a los artistas!</h2>
+                <img src="./assets/ShinyHappyMorningJog.png"></img>
+                <p>Gracias por comprar en UruArte y apoyar a los pequeños y emergentes artistas.
+                </p>
+            `,
+        }).mount('#app');
+    </script>
+
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        html{
+            font-size: 62.5%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2{
+            font-size: 20px;
+        }
+        h1{
+            font-size: 3.0rem;
+            margin-top: 15px;
+            text-align: center;
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+        ul li{
+            margin: 0 .75rem;
+            margin-top: 5px;
+        }
+        ul li a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: rgb(90, 89, 89);
+        }
+        img{
+            display: block;
+            margin: 0 auto;
+            margin-top: 45px;
+        }
+        h2{
+            text-align: center;
+            margin-top: 40px;
+        }
+        p{
+            font-size: 12px;
+            text-align: center;
+            margin-top: 25px;
+        }
+        button{
+            display: block;
+            margin: 0 auto;
+            width: 105px;
+            height: 45px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border: none;
+            background-color: #55EC5B;
+            margin-top: 50px;
+        }
+        button a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</body>
